@@ -1,0 +1,552 @@
+{
+  "_links": {
+    "root": {
+      "href": "/"
+    },
+    "self": {
+      "href": "/scans/e69e2a60-6fa6-4ee5-8e37-8d39c9a6b116/findings"
+    },
+    "help": {
+      "href": "https://help.veracode.com/reader/tS9CaFwL4_lbIEWWomsJoA/ovfZGgu96UINQxIuTqRDwg"
+    }
+  },
+  "scan_id": "e69e2a60-6fa6-4ee5-8e37-8d39c9a6b116",
+  "scan_status": "SUCCESS",
+  "message": "Scan successful. Results size: 34360 bytes",
+  "modules": [
+    "coupa-integration-1.1.3.jar"
+  ],
+  "modules_count": 1,
+  "findings": [
+    {
+      "title": "disable",
+      "issue_id": 1000,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/platform/security/WebSecurityConfig",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "crypto",
+      "issue_type": "Cross-Site Request Forgery (CSRF)",
+      "cwe_id": "352",
+      "display_text": "\u003cspan\u003eThis application seems to be explicitly disabled default secure protection provided by Spring Security framework against cross site request forgery attacks. If this disabled protection is deployed in production environments, it could allow a malicious web application to influence the interactions between (trusted) client browser and web-server.\u003c/span\u003e \u003cspan\u003eMake sure this disabled protection configuration is not deployed in real time production environment. Additional protection mechanisms against CSRF attacks are discussed in references.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.md\"\u003eOWASP\u003c/a\u003e\u003cbr\u003e\u003ca href\u003d\"https://docs.spring.io/spring-security/reference/features/exploits/csrf.html\"\u003eCSRF Protection in Spring Security\u003c/a\u003e\u003cbr\u003e\u003ca href\u003d\"https://cwe.mitre.org/data/definitions/352.html\"\u003eCWE 352\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/platform/security/WebSecurityConfig.java",
+          "line": 57,
+          "function_name": "configure",
+          "qualified_function_name": "com.sovos.platform.security.WebSecurityConfig.configure",
+          "function_prototype": "void configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)",
+          "scope": "com.sovos.platform.security.WebSecurityConfig"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "205361154",
+        "prototype_hash": "3008479982",
+        "flaw_hash": "3522842583",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2853736140",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/352.html"
+    },
+    {
+      "title": "PASSWORD initializer",
+      "issue_id": 1002,
+      "image_path": "file:file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/lib/sovos-platform-core-3.1.1.jar#zip:com/sovos/platform/security/SpringCrypto",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "crypto",
+      "issue_type": "Use of Hard-coded Password",
+      "cwe_id": "259",
+      "display_text": "\u003cspan\u003eThis variable assignment uses a hard-coded password that may compromise system security in a way that cannot be easily remedied.  The use of a hard-coded password significantly increases the possibility that the account being protected will be compromised.  Moreover, the password cannot be changed without patching the software.  If a hard-coded password is compromised in a commercial product, all deployed instances may be vulnerable to attack.  In some cases, this finding may indicate a reference to a password (e.g. the name of a key in a properties file) rather than an actual password. PASSWORD initializer\u003c/span\u003e \u003cspan\u003eStore passwords out-of-band from the application code.  Follow best practices for protecting credentials stored in locations such as configuration or properties files. An HSM may be appropriate for particularly sensitive credentials.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/259.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/platform/security/SpringCrypto.java",
+          "line": 1,
+          "function_name": "UNKNOWN",
+          "qualified_function_name": "UNKNOWN",
+          "function_prototype": "UNKNOWN",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1773179390",
+        "prototype_hash": "0",
+        "flaw_hash": "747559410",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "0",
+        "cause_hash_count": 0,
+        "cause_hash_ordinal": 0,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/259.html"
+    },
+    {
+      "title": "org.slf4j.Logger.debug",
+      "issue_id": 1015,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/platform/security/RequestFilter",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.slf4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to debug() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/platform/security/RequestFilter.java",
+          "line": 56,
+          "function_name": "doFilterInternal",
+          "qualified_function_name": "com.sovos.platform.security.RequestFilter.doFilterInternal",
+          "function_prototype": "void doFilterInternal(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)",
+          "scope": "com.sovos.platform.security.RequestFilter"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3811455324",
+        "prototype_hash": "1799630143",
+        "flaw_hash": "2297782376",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2737864559",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1215395443",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.slf4j.Logger.debug",
+      "issue_id": 1016,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/platform/security/RequestFilter",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.slf4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to debug() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/platform/security/RequestFilter.java",
+          "line": 79,
+          "function_name": "doFilterInternal",
+          "qualified_function_name": "com.sovos.platform.security.RequestFilter.doFilterInternal",
+          "function_prototype": "void doFilterInternal(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain)",
+          "scope": "com.sovos.platform.security.RequestFilter"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3811455324",
+        "prototype_hash": "1799630143",
+        "flaw_hash": "2297782376",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 2,
+        "cause_hash": "2737864559",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1215395443",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.error",
+      "issue_id": 1009,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/platform/security/JwtToken",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.error() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to error() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/platform/security/JwtToken.java",
+          "line": 50,
+          "function_name": "getUserDetails",
+          "qualified_function_name": "com.sovos.platform.security.JwtToken.getUserDetails",
+          "function_prototype": "org.springframework.security.core.userdetails.UserDetails getUserDetails(java.lang.String, java.lang.String, coupa.domain.CoupaAccount)",
+          "scope": "com.sovos.platform.security.JwtToken"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2782699519",
+        "prototype_hash": "230906543",
+        "flaw_hash": "3489223225",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "2339134465",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1317433518",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.warn",
+      "issue_id": 1014,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/servlet/PreferredResponseMediaTypeFilter",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.warn() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to warn() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/servlet/PreferredResponseMediaTypeFilter.java",
+          "line": 68,
+          "function_name": "doFilter",
+          "qualified_function_name": "com.sovos.coupa.servlet.PreferredResponseMediaTypeFilter.doFilter",
+          "function_prototype": "void doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)",
+          "scope": "com.sovos.coupa.servlet.PreferredResponseMediaTypeFilter"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3079679754",
+        "prototype_hash": "1172177457",
+        "flaw_hash": "3666350991",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "1329779791",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "191448578",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.debug",
+      "issue_id": 1008,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/S1RestService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to debug() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/S1RestService.java",
+          "line": 52,
+          "function_name": "getCoupaAccount",
+          "qualified_function_name": "com.sovos.coupa.service.S1RestService.getCoupaAccount",
+          "function_prototype": "domain.IamOrgResponse getCoupaAccount(java.lang.String)",
+          "scope": "com.sovos.coupa.service.S1RestService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1083420086",
+        "prototype_hash": "3269512677",
+        "flaw_hash": "3025158441",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3068072700",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "428515250",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.debug",
+      "issue_id": 1005,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/CoupaTransactionService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to debug() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/CoupaTransactionService.java",
+          "line": 71,
+          "function_name": "executeEvaluate",
+          "qualified_function_name": "com.sovos.coupa.service.CoupaTransactionService.executeEvaluate",
+          "function_prototype": "org.springframework.http.ResponseEntity executeEvaluate(controller.dto.GtdRequest, java.lang.String)",
+          "scope": "com.sovos.coupa.service.CoupaTransactionService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1836675040",
+        "prototype_hash": "745622386",
+        "flaw_hash": "3025158441",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3068072700",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "428515250",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.debug",
+      "issue_id": 1007,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/CoupaTransactionService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to debug() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/CoupaTransactionService.java",
+          "line": 78,
+          "function_name": "executeEvaluate",
+          "qualified_function_name": "com.sovos.coupa.service.CoupaTransactionService.executeEvaluate",
+          "function_prototype": "org.springframework.http.ResponseEntity executeEvaluate(controller.dto.GtdRequest, java.lang.String)",
+          "scope": "com.sovos.coupa.service.CoupaTransactionService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1836675040",
+        "prototype_hash": "745622386",
+        "flaw_hash": "3025158441",
+        "flaw_hash_count": 2,
+        "flaw_hash_ordinal": 2,
+        "cause_hash": "3068072700",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "428515250",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "javax.crypto.Mac.getInstance",
+      "issue_id": 1018,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/CoupaTransactionService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "crypto",
+      "issue_type": "Use of a Broken or Risky Cryptographic Algorithm",
+      "cwe_id": "327",
+      "display_text": "\u003cspan\u003eThis function uses the HMACSha1() function, which uses a hash algorithm that is considered weak. In recent years, researchers have demonstrated ways to breach many uses of previously-thought-safe hash functions such as MD5. \u003c/span\u003e \u003cspan\u003eConsider using a stronger algorithm in order to prevent attackers from being able to manipulate hash results. If this algorithm is being used to hash passwords, then consider using a strong computationally-hard algorithm such as PBKDF2 or bcrypt instead of a plain hashing algorithm.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/327.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/CoupaTransactionService.java",
+          "line": 99,
+          "function_name": "getHmacHeader",
+          "qualified_function_name": "com.sovos.coupa.service.CoupaTransactionService.getHmacHeader",
+          "function_prototype": "java.lang.String getHmacHeader(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)",
+          "scope": "com.sovos.coupa.service.CoupaTransactionService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3903589712",
+        "prototype_hash": "3224867043",
+        "flaw_hash": "1150030635",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3766864752",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/327.html"
+    },
+    {
+      "title": "GTD_USERNAME initializer",
+      "issue_id": 1001,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/AccountTranslatorService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "crypto",
+      "issue_type": "Use of Hard-coded Credentials",
+      "cwe_id": "798",
+      "display_text": "\u003cspan\u003eThe application contains hard-coded information that may contain credentials to an external service.  The use of hard-coded credentials significantly increases the possibility that the account being protected will be compromised. GTD_USERNAME initializer\u003c/span\u003e \u003cspan\u003eStore credentials out-of-band from the application code.  Follow best practices for protecting credentials stored in locations such as configuration or properties files.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/798.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/AccountTranslatorService.java",
+          "line": 1,
+          "function_name": "UNKNOWN",
+          "qualified_function_name": "UNKNOWN",
+          "function_prototype": "UNKNOWN",
+          "scope": "UNKNOWN"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "3041660445",
+        "prototype_hash": "0",
+        "flaw_hash": "4202835921",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "0",
+        "cause_hash_count": 0,
+        "cause_hash_ordinal": 0,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/798.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.debug",
+      "issue_id": 1004,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/AccountCacheService",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.debug() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The second argument to debug() contains tainted data from the variable correlationId. The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/AccountCacheService.java",
+          "line": 33,
+          "function_name": "getAccount",
+          "qualified_function_name": "com.sovos.coupa.service.AccountCacheService.getAccount",
+          "function_prototype": "domain.CoupaAccount getAccount(java.lang.String, java.lang.String)",
+          "scope": "com.sovos.coupa.service.AccountCacheService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2466921927",
+        "prototype_hash": "1963312024",
+        "flaw_hash": "673270867",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "3549919143",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1522093433",
+        "cause_hash2_ordinal": "4"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "org.apache.logging.log4j.Logger.info",
+      "issue_id": 1013,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/controller/CoupaController",
+      "gob": "B",
+      "severity": 3,
+      "issue_type_id": "taint",
+      "issue_type": "Improper Output Neutralization for Logs",
+      "cwe_id": "117",
+      "display_text": "\u003cspan\u003eThis call to org.apache.logging.log4j.Logger.info() could result in a log forging attack.  Writing untrusted data into a log file allows an attacker to forge log entries or inject malicious content into log files.  Corrupted log files can be used to cover an attacker\u0027s tracks or as a delivery mechanism for an attack on a log viewing or processing utility.  For example, if a web administrator uses a browser-based utility to review logs, a cross-site scripting attack might be possible. The first argument to info() contains tainted data from the variable format(). The tainted data originated from earlier calls to javax.servlet.http.HttpServletRequest.getHeader, and javax.servlet.http.HttpServletRequestWrapper.getHeader.\u003c/span\u003e \u003cspan\u003eAvoid directly embedding user input in log files when possible.  Sanitize untrusted data used to construct log entries by using a safe logging mechanism such as the OWASP ESAPI Logger, which will automatically remove unexpected carriage returns and line feeds and can be configured to use HTML entity encoding for non-alphanumeric data.  Alternatively, some of the XSS escaping functions from the OWASP Java Encoder project will also sanitize CRLF sequences.  Only create a custom blocklist when absolutely necessary.  Always validate untrusted input to ensure that it conforms to the expected format, using centralized data validation routines when possible.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/117.html\"\u003eCWE\u003c/a\u003e \u003ca href\u003d\"https://owasp.org/www-community/attacks/Log_Injection\"\u003eOWASP\u003c/a\u003e \u003ca href\u003d\"https://docs.veracode.com/r/review_cleansers?tocId\u003dnYnZqAenFFZmB75MQrZwuA\"\u003eSupported Cleansers\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/controller/CoupaController.java",
+          "line": 59,
+          "function_name": "createTransaction",
+          "qualified_function_name": "com.sovos.coupa.controller.CoupaController.createTransaction",
+          "function_prototype": "org.springframework.http.ResponseEntity createTransaction(dto.CoupaRequest)",
+          "scope": "com.sovos.coupa.controller.CoupaController"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "2040621010",
+        "prototype_hash": "840798719",
+        "flaw_hash": "1224069486",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "1079500986",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "1591069520",
+        "cause_hash2_ordinal": "1"
+      },
+      "stack_dumps": {
+        "stack_dump": [
+          {}
+        ]
+      },
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/117.html"
+    },
+    {
+      "title": "span.equ",
+      "issue_id": 1019,
+      "image_path": "file:/tmp/tmpko4yr67p/binary/coupa-integration-1.1.3.jar.aes#zip:BOOT-INF/classes/com/sovos/coupa/service/CoupaTranslatorService",
+      "gob": "B",
+      "severity": 2,
+      "issue_type_id": "reliability",
+      "issue_type": "Use of Wrong Operator in String Comparison",
+      "cwe_id": "597",
+      "display_text": "\u003cspan\u003eUsing \u0027\u003d\u003d\u0027 to compare two strings for equality actually compares the object references rather than their values.  It is unlikely that this reflects the intended application logic.\u003c/span\u003e \u003cspan\u003eUse the equals() method to compare strings, not the \u0027\u003d\u003d\u0027 operator.\u003c/span\u003e \u003cspan\u003eReferences: \u003ca href\u003d\"https://cwe.mitre.org/data/definitions/597.html\"\u003eCWE\u003c/a\u003e\u003c/span\u003e",
+      "files": {
+        "source_file": {
+          "file": "com/sovos/coupa/service/CoupaTranslatorService.java",
+          "line": 129,
+          "function_name": "CalculationLineItemTranslate",
+          "qualified_function_name": "com.sovos.coupa.service.CoupaTranslatorService.CalculationLineItemTranslate",
+          "function_prototype": "void CalculationLineItemTranslate(controller.dto.LineItemGtdRequest, controller.dto.LineItemCoupaRequest, controller.dto.CoupaRequest)",
+          "scope": "com.sovos.coupa.service.CoupaTranslatorService"
+        }
+      },
+      "flaw_match": {
+        "procedure_hash": "1642822797",
+        "prototype_hash": "2122965026",
+        "flaw_hash": "163978841",
+        "flaw_hash_count": 1,
+        "flaw_hash_ordinal": 1,
+        "cause_hash": "475043705",
+        "cause_hash_count": 1,
+        "cause_hash_ordinal": 1,
+        "cause_hash2": "0",
+        "cause_hash2_ordinal": "0"
+      },
+      "stack_dumps": {},
+      "flaw_details_link": "https://downloads.veracode.com/securityscan/cwe/v4/java/597.html"
+    }
+  ],
+  "selected_modules": [],
+  "pipeline_scan": "24.5.0-0",
+  "project_name": "adapters-coupa-integration",
+  "dev_stage": "DEVELOPMENT"
+}

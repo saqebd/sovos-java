@@ -1,0 +1,354 @@
+Veracode SCA agent scanning engine ready
+Running the Maven scanner
+Scanning completed
+Found 4878 lines of code
+Processing results...
+Processing results complete
+
+Summary Report
+Scan ID                                        dbfe2a56-8700-429b-bf55-af40ccb2b2a6
+Scan Date & Time                               May 23 2024 01:25PM UTC
+Account type                                   ENTERPRISE
+Scan engine                                    3.8.64 (latest 3.8.64)
+Analysis time                                  15 seconds
+User                                           vsts
+Project                                        /home/vsts/work/1/s
+Package Manager(s)                             Jar, Maven
+
+Open-Source Libraries
+Total Libraries                                172
+Direct Libraries                               28
+Transitive Libraries                           144
+Vulnerable Libraries                           37
+Third Party Code                               99.5%
+
+Vulnerable Methods
+2 vulnerable methods can be reached via the code's call graph
+
+Call Source                                                  Method Name                                                                                                                                                                            Library
+AccountService.getAccountPropertyResponse [line 72]          SubTypeValidator.validateSubType(Lcom/fasterxml/jackson/databind/DeserializationContext;Lcom/fasterxml/jackson/databind/JavaType;Lcom/fasterxml/jackson/databind/BeanDescription;)     jackson-databind : 2.9.8
+RestService.getGtdHealthStatus [line 80]                     ContentDisposition.toString()                                                                                                                                                          Spring Web : 5.1.6.RELEASE
+RestService.getResponse [line 56]                            ContentDisposition.toString()                                                                                                                                                          Spring Web : 5.1.6.RELEASE
+CoupaTransactionService.executeEvaluate [line 74]            ContentDisposition.toString()                                                                                                                                                          Spring Web : 5.1.6.RELEASE
+
+Security
+With Vulnerable Methods                        2
+Critical Risk Vulnerabilities                  26
+High Risk Vulnerabilities                      71
+Medium Risk Vulnerabilities                    35
+Low Risk Vulnerabilities                       1
+
+Vulnerabilities - Public Data
+CVE-2022-22978                                 Critical Risk     Authorization Bypass                                    spring-security-web 5.1.5.RELEASE
+CVE-2022-22965                                 Critical Risk     Remote Code Execution (RCE)                             Spring Beans 5.1.6.RELEASE
+CVE-2019-16942                                 Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2019-16943                                 Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2019-20330                                 Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2019-14892                                 Critical Risk     Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2019-14893                                 Critical Risk     Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2019-14540                                 Critical Risk     Deserialization Of Untrusted Data                       jackson-databind 2.9.8
+CVE-2019-17267                                 Critical Risk     Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2019-16335                                 Critical Risk     Deserialization Of Untrusted Data                       jackson-databind 2.9.8
+CVE-2019-17531                                 Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2019-14379                                 Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-8840                                  Critical Risk     Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2020-9546                                  Critical Risk     Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2020-9547                                  Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-9548                                  Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-5413                                  Critical Risk     Remote Code Execution (RCE)                             Spring Integration Core 5.1.4.RELEASE
+CVE-2016-1000027                               Critical Risk     Remote Code Execution (RCE)                             Spring Web 5.1.6.RELEASE
+CVE-2020-10683                                 Critical Risk     XML External Entity                                     dom4j 2.1.1
+CVE-2022-42889                                 Critical Risk     Arbitrary Code Execution                                Apache Commons Text 1.9
+CVE-2017-1000487                               Critical Risk     Command Line Shell Injection                            Plexus Common Utilities 1.5.15
+CVE-2023-20873                                 Critical Risk     Access Restriction Bypass                               spring-boot-actuator-autoconfigure 2.1.4.RELEASE
+CVE-2020-1938                                  Critical Risk     Authentication Bypass                                   tomcat-embed-core 9.0.17
+CVE-2019-17495                                 Critical Risk     CSS Injection                                           springfox-swagger-ui 2.5.0
+CVE-2021-22112                                 High Risk         Privilege Escalation                                    spring-security-web 5.1.5.RELEASE
+CVE-2020-13935                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-websocket 9.0.17
+CVE-2024-23672                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-websocket 9.0.17
+CVE-2023-20883                                 High Risk         Denial Of Service (DoS)                                 spring-boot-autoconfigure 2.1.4.RELEASE
+CVE-2021-37714                                 High Risk         Denial Of Service                                       jsoup Java HTML Parser 1.11.3
+CVE-2023-6378                                  High Risk         Denial Of Service (DoS)                                 Logback Core Module 1.2.3
+CVE-2024-22257                                 High Risk         Improper Access Control                                 spring-security-core 5.1.5.RELEASE
+CVE-2020-5398                                  High Risk         Reflected File Download                                 Spring Web MVC 5.1.6.RELEASE
+CVE-2023-46120                                 High Risk         Denial Of Service (DoS)                                 RabbitMQ Java Client 5.4.3
+CVE-2020-10673                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-11111                                 High Risk         Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2020-36518                                 High Risk         Denial Of Service (DoS)                                 jackson-databind 2.9.8
+CVE-2020-35490                                 High Risk         Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2020-11113                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-11112                                 High Risk         Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2020-24616                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36187                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36186                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36184                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36185                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36182                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36179                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36189                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36188                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36183                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36181                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-36180                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2022-42003                                 High Risk         Denial Of Service (DoS)                                 jackson-databind 2.9.8
+CVE-2020-10969                                 High Risk         Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2021-20190                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-24750                                 High Risk         Arbitrary Code Execution                                jackson-databind 2.9.8
+CVE-2020-35728                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-10968                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-10650                                 High Risk         Deserialization Of Untrusted Data                       jackson-databind 2.9.8
+CVE-2020-25649                                 High Risk         XML External Entity (XXE)                               jackson-databind 2.9.8
+CVE-2020-11619                                 High Risk         Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2020-11620                                 High Risk         Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2019-14439                                 High Risk         Deserialization Of Untrusted Data                       jackson-databind 2.9.8
+CVE-2019-12086                                 High Risk         Remote Code Execution (RCE) Through Deserialization     jackson-databind 2.9.8
+CVE-2020-14062                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-14061                                 High Risk         Remote Code Execution (RCE)                             jackson-databind 2.9.8
+CVE-2020-14060                                 High Risk         Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2020-35491                                 High Risk         Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2020-10672                                 High Risk         Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2020-14195                                 High Risk         Remote Code Execution                                   jackson-databind 2.9.8
+CVE-2022-25647                                 High Risk         Denial Of Service (DoS)                                 Gson 2.8.1
+CVE-2021-22118                                 High Risk         Privilege Escalation                                    Spring Web 5.1.6.RELEASE
+CVE-2024-22259                                 High Risk         Server Side Request Forgery (SSRF)                      Spring Web 5.1.6.RELEASE
+CVE-2020-5398                                  High Risk         Reflected File Download                                 Spring Web 5.1.6.RELEASE
+CVE-2024-22243                                 High Risk         Server Side Request Forgery (SSRF)                      Spring Web 5.1.6.RELEASE
+CVE-2024-22262                                 High Risk         Open Redirect                                           Spring Web 5.1.6.RELEASE
+CVE-2023-2976                                  High Risk         Information Disclosure                                  Guava: Google Core Libraries for Java 18.0
+CVE-2022-27772                                 High Risk         Directory Traversal                                     spring-boot 2.1.4.RELEASE
+CVE-2022-45688                                 High Risk         Denial Of Service (DoS)                                 JSON in Java 20160212
+CVE-2023-5072                                  High Risk         Denial Of Service                                       JSON in Java 20160212
+CVE-2020-25638                                 High Risk         SQL Injection                                           hibernate-core - relocation 5.3.9.Final
+CVE-2022-4244                                  High Risk         Path Traversal                                          Plexus Common Utilities 1.5.15
+CVE-2021-25122                                 High Risk         Information Disclosure                                  tomcat-embed-core 9.0.17
+CVE-2023-46589                                 High Risk         Request Smuggling                                       tomcat-embed-core 9.0.17
+CVE-2020-17527                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2023-28709                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2019-12418                                 High Risk         Privilege Escalation                                    tomcat-embed-core 9.0.17
+CVE-2021-25329                                 High Risk         Remote Code Execution                                   tomcat-embed-core 9.0.17
+CVE-2022-23181                                 High Risk         Time Of Check To Time Of Use (TOCTOU)                   tomcat-embed-core 9.0.17
+CVE-2023-44487                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2024-24549                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2019-10072                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2020-13934                                 High Risk         Denial Of Service (DoS)                                 tomcat-embed-core 9.0.17
+CVE-2023-6378                                  High Risk         Denial Of Service (DoS)                                 Logback Classic Module 1.2.3
+CVE-2023-20863                                 Medium Risk       Denial Of Service (DoS)                                 Spring Expression Language (SpEL) 5.1.6.RELEASE
+CVE-2022-22950                                 Medium Risk       Denial Of Service (DoS)                                 Spring Expression Language (SpEL) 5.1.6.RELEASE
+CVE-2022-22968                                 Medium Risk       Binding Rules Bypass                                    Spring Context 5.1.6.RELEASE
+CVE-2022-36033                                 Medium Risk       Cross-site Scripting (XSS)                              jsoup Java HTML Parser 1.11.3
+CVE-2021-42550                                 Medium Risk       Remote Code Execution (RCE)                             Logback Core Module 1.2.3
+CVE-2020-5408                                  Medium Risk       Information Disclosure                                  spring-security-core 5.1.5.RELEASE
+CVE-2020-10693                                 Medium Risk       EL Expression Injection                                 Hibernate Validator Engine 6.1.0.Alpha4
+CVE-2019-10219                                 Medium Risk       Cross-site Scripting (XSS)                              Hibernate Validator Engine 6.1.0.Alpha4
+CVE-2022-22970                                 Medium Risk       Denial Of Service (DoS)                                 Spring Beans 5.1.6.RELEASE
+CVE-2019-12384                                 Medium Risk       Unsafe Deserialization                                  jackson-databind 2.9.8
+CVE-2019-12814                                 Medium Risk       Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+CVE-2021-22097                                 Medium Risk       Denial Of Service (DoS)                                 Spring AMQP Core 2.1.5.RELEASE
+CVE-2021-44832                                 Medium Risk       Remote Code Execution (RCE)                             Apache Log4j Core 2.17.0
+CVE-2012-2098                                  Medium Risk       Denial Of Service (DoS) CPU Consumption                 Apache Ant Core 1.7.0
+CVE-2020-1945                                  Medium Risk       Insecure Temporary Directory                            Apache Ant Core 1.7.0
+CVE-2020-5421                                  Medium Risk       Reflected File Download (RFD) Attack                    Spring Web 5.1.6.RELEASE
+CVE-2018-10237                                 Medium Risk       Denial Of Service (DoS)                                 Guava: Google Core Libraries for Java 18.0
+CVE-2020-15250                                 Medium Risk       Information Disclosure                                  JUnit 4.12
+CVE-2022-22971                                 Medium Risk       Denial Of Service (DoS)                                 Spring Messaging 5.1.6.RELEASE
+CVE-2021-22096                                 Medium Risk       Log Injection                                           Spring Core 5.1.6.RELEASE
+CVE-2019-14900                                 Medium Risk       SQL Injection                                           hibernate-core - relocation 5.3.9.Final
+CVE-2019-3802                                  Medium Risk       Information Disclosure                                  Spring Data JPA 2.1.6.RELEASE
+CVE-2022-4245                                  Medium Risk       XML External Entity (XXE) Injection                     Plexus Common Utilities 1.5.15
+CVE-2021-22047                                 Medium Risk       Security Restriction Bypass                             spring-boot-actuator 2.1.4.RELEASE
+CVE-2021-33037                                 Medium Risk       Request Smuggling                                       tomcat-embed-core 9.0.17
+CVE-2020-13943                                 Medium Risk       Information Disclosure                                  tomcat-embed-core 9.0.17
+CVE-2021-30640                                 Medium Risk       Access Restriction Bypass                               tomcat-embed-core 9.0.17
+CVE-2024-21733                                 Medium Risk       Sensitive Information Disclosure                        tomcat-embed-core 9.0.17
+CVE-2021-24122                                 Medium Risk       Information Disclosure                                  tomcat-embed-core 9.0.17
+CVE-2020-13956                                 Medium Risk       Validation Bypass                                       Apache HttpClient 4.5.8
+CVE-2021-42550                                 Medium Risk       Remote Code Execution (RCE)                             Logback Classic Module 1.2.3
+CVE-2020-8908                                  Low Risk          Information Disclosure                                  Guava: Google Core Libraries for Java 18.0
+
+Vulnerabilities - Premium Data
+NO-CVE                                         Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+NO-CVE                                         Critical Risk     Remote Code Execution (RCE)                             jackson-databind 2.9.8
+NO-CVE                                         High Risk         Deserialization Of Untrusted Data                       jackson-databind 2.9.8
+NO-CVE                                         High Risk         XML Injection                                           Plexus Common Utilities 1.5.15
+NO-CVE                                         Medium Risk       Cross-Site Request Forgery (CSRF)                       spring-security-web 5.1.5.RELEASE
+NO-CVE                                         Medium Risk       Host Header Attack                                      spring-security-web 5.1.5.RELEASE
+NO-CVE                                         Medium Risk       Insecure Input Validation                               Apache Commons Codec 1.11
+NO-CVE                                         Medium Risk       Directory Traversal                                     Plexus Common Utilities 1.5.15
+
+Licenses
+Unique Library Licenses                        19
+Libraries Using GPL                            14
+Libraries With High Risk License               21
+Libraries With Medium Risk License             36
+Libraries With Low Risk License                159
+Libraries With Multiple Licenses               26
+Libraries With Unassessable License            0
+Libraries With Unrecognizable License          0
+
+Issues
+Issue ID     Issue Type          Severity    Description                                                            Library Name & Version In Use
+298236995    Vulnerability       5.3         CVE-2012-2098: Denial of Service (DoS) CPU Consumption                 Apache Ant Core 1.7.0
+298236996    Vulnerability       5.8         NO-CVE: Directory Traversal                                            Plexus Common Utilities 1.5.15
+298236997    Vulnerability       9.8         CVE-2017-1000487: Command Line Shell Injection                         Plexus Common Utilities 1.5.15
+298236998    Vulnerability       5.9         CVE-2018-10237: Denial Of Service (DoS)                                Guava: Google Core Libraries for Java 18.0
+298236999    Vulnerability       5.3         CVE-2019-3802: Information Disclosure                                  Spring Data JPA 2.1.6.RELEASE
+298237000    Vulnerability       7.5         CVE-2019-12086: Remote Code Execution (RCE) Through Deserialization    jackson-databind 2.9.8
+298237001    Vulnerability       5.9         CVE-2019-12384: Unsafe Deserialization                                 jackson-databind 2.9.8
+298237002    Vulnerability       6.5         NO-CVE: Host Header Attack                                             spring-security-web 5.1.5.RELEASE
+298237003    Vulnerability       5.9         CVE-2019-12814: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237004    Vulnerability       7.5         CVE-2019-10072: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237005    Vulnerability       9.8         CVE-2019-14379: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237006    Vulnerability       7.5         CVE-2019-14439: Deserialization Of Untrusted Data                      jackson-databind 2.9.8
+298237007    Vulnerability       9.8         CVE-2019-14540: Deserialization Of Untrusted Data                      jackson-databind 2.9.8
+298237008    Vulnerability       9.8         CVE-2019-16335: Deserialization Of Untrusted Data                      jackson-databind 2.9.8
+298237009    Vulnerability       7.3         NO-CVE: Deserialization Of Untrusted Data                              jackson-databind 2.9.8
+298237010    Vulnerability       9.8         CVE-2019-16942: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237011    Vulnerability       9.8         CVE-2019-16943: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237012    Vulnerability       9.8         CVE-2019-17267: Remote Code Execution                                  jackson-databind 2.9.8
+298237013    Vulnerability       9.8         CVE-2019-17495: CSS Injection                                          springfox-swagger-ui 2.5.0
+298237014    Vulnerability       9.8         CVE-2019-17531: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237015    Vulnerability       9.8         CVE-2019-14892: Remote Code Execution                                  jackson-databind 2.9.8
+298237016    Vulnerability       9.8         CVE-2019-14893: Remote Code Execution                                  jackson-databind 2.9.8
+298237017    Vulnerability       7.0         CVE-2019-12418: Privilege Escalation                                   tomcat-embed-core 9.0.17
+298237018    Vulnerability       9.8         CVE-2019-20330: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237019    Vulnerability       9.8         CVE-2016-1000027: Remote Code Execution (RCE)                          Spring Web 5.1.6.RELEASE
+298237020    Vulnerability       6.1         CVE-2019-10219: Cross-site Scripting (XSS)                             Hibernate Validator Engine 6.1.0.Alpha4
+298237021    Vulnerability       7.5         CVE-2020-5398: Reflected File Download                                 Spring Web MVC 5.1.6.RELEASE
+298237022    Vulnerability       7.5         CVE-2020-5398: Reflected File Download                                 Spring Web 5.1.6.RELEASE
+298237023    Vulnerability       9.8         CVE-2020-8840: Remote Code Execution                                   jackson-databind 2.9.8
+298237024    Vulnerability       9.8         CVE-2020-1938: Authentication Bypass                                   tomcat-embed-core 9.0.17
+298237025    Vulnerability       9.8         CVE-2020-9546: Deserialization Of Untrusted Object                     jackson-databind 2.9.8
+298237026    Vulnerability       9.8         CVE-2020-9547: Remote Code Execution (RCE)                             jackson-databind 2.9.8
+298237027    Vulnerability       9.8         CVE-2020-9548: Remote Code Execution (RCE)                             jackson-databind 2.9.8
+298237028    Vulnerability       9.8         NO-CVE: Remote Code Execution (RCE)                                    jackson-databind 2.9.8
+298237029    Vulnerability       9.8         NO-CVE: Remote Code Execution (RCE)                                    jackson-databind 2.9.8
+298237030    Vulnerability       5.3         NO-CVE: Insecure Input Validation                                      Apache Commons Codec 1.11
+298237031    Vulnerability       7.3         NO-CVE: XML Injection                                                  Plexus Common Utilities 1.5.15
+298237032    Vulnerability       8.8         CVE-2020-10672: Remote Code Execution                                  jackson-databind 2.9.8
+298237033    Vulnerability       8.8         CVE-2020-10673: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237034    Vulnerability       8.8         CVE-2020-10969: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237085    Vulnerability       8.8         CVE-2020-10968: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237086    Vulnerability       4.3         NO-CVE: Cross-Site Request Forgery (CSRF)                              spring-security-web 5.1.5.RELEASE
+298237087    Vulnerability       8.8         CVE-2020-11113: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237088    Vulnerability       8.8         CVE-2020-11112: Remote Code Execution                                  jackson-databind 2.9.8
+298237089    Vulnerability       8.1         CVE-2020-11619: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237090    Vulnerability       8.1         CVE-2020-11620: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237091    Vulnerability       9.8         CVE-2020-10683: XML External Entity                                    dom4j 2.1.1
+298237092    Vulnerability       6.5         CVE-2020-5408: Information Disclosure                                  spring-security-core 5.1.5.RELEASE
+298237093    Vulnerability       6.3         CVE-2020-1945: Insecure Temporary Directory                            Apache Ant Core 1.7.0
+298237094    Vulnerability       5.3         CVE-2020-10693: EL Expression Injection                                Hibernate Validator Engine 6.1.0.Alpha4
+298237095    Vulnerability       8.8         CVE-2020-11111: Remote Code Execution                                  jackson-databind 2.9.8
+298237096    Vulnerability       8.1         CVE-2020-14062: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237097    Vulnerability       8.1         CVE-2020-14061: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237098    Vulnerability       8.1         CVE-2020-14060: Remote Code Execution                                  jackson-databind 2.9.8
+298237099    Vulnerability       8.1         CVE-2020-14195: Remote Code Execution                                  jackson-databind 2.9.8
+298237100    Vulnerability       7.5         CVE-2020-13934: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237101    Vulnerability       7.5         CVE-2020-13935: Denial Of Service (DoS)                                tomcat-embed-websocket 9.0.17
+298237102    Vulnerability       9.8         CVE-2020-5413: Remote Code Execution (RCE)                             Spring Integration Core 5.1.4.RELEASE
+298237103    Vulnerability       6.5         CVE-2019-14900: SQL Injection                                          hibernate-core - relocation 5.3.9.Final
+298237104    Vulnerability       8.1         CVE-2020-24616: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237105    Vulnerability       8.1         CVE-2020-24750: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237106    Vulnerability       6.5         CVE-2020-5421: Reflected File Download (RFD) Attack                    Spring Web 5.1.6.RELEASE
+298237107    Vulnerability       5.3         CVE-2020-13956: Validation Bypass                                      Apache HttpClient 4.5.8
+298237108    Vulnerability       5.5         CVE-2020-15250: Information Disclosure                                 JUnit 4.12
+298237109    Vulnerability       4.3         CVE-2020-13943: Information Disclosure                                 tomcat-embed-core 9.0.17
+298237110    Vulnerability       7.5         CVE-2020-25649: XML External Entity (XXE)                              jackson-databind 2.9.8
+298237111    Vulnerability       3.3         CVE-2020-8908: Information Disclosure                                  Guava: Google Core Libraries for Java 18.0
+298237112    Vulnerability       7.4         CVE-2020-25638: SQL Injection                                          hibernate-core - relocation 5.3.9.Final
+298237113    Vulnerability       7.5         CVE-2020-17527: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237114    Vulnerability       8.1         CVE-2020-35491: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237115    Vulnerability       8.1         CVE-2020-35728: Remote Code Execution (RCE)                            jackson-databind 2.9.8
+298237116    Vulnerability       8.1         CVE-2020-35490: Deserialization Of Untrusted Object                    jackson-databind 2.9.8
+298237117    Vulnerability       8.1         CVE-2020-36187: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237118    Vulnerability       8.1         CVE-2020-36186: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237119    Vulnerability       8.1         CVE-2020-36184: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237120    Vulnerability       8.1         CVE-2020-36185: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237121    Vulnerability       8.1         CVE-2020-36182: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237122    Vulnerability       8.1         CVE-2020-36179: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237123    Vulnerability       8.1         CVE-2020-36189: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237124    Vulnerability       8.1         CVE-2020-36188: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237125    Vulnerability       8.1         CVE-2020-36183: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237126    Vulnerability       8.1         CVE-2020-36181: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237127    Vulnerability       8.1         CVE-2020-36180: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237128    Vulnerability       5.9         CVE-2021-24122: Information Disclosure                                 tomcat-embed-core 9.0.17
+298237129    Vulnerability       8.1         CVE-2021-20190: Arbitrary Code Execution                               jackson-databind 2.9.8
+298237130    Vulnerability       7.5         CVE-2021-25122: Information Disclosure                                 tomcat-embed-core 9.0.17
+298237131    Vulnerability       7.0         CVE-2021-25329: Remote Code Execution                                  tomcat-embed-core 9.0.17
+298237132    Vulnerability       8.8         CVE-2021-22112: Privilege Escalation                                   spring-security-web 5.1.5.RELEASE
+298237133    Vulnerability       7.8         CVE-2021-22118: Privilege Escalation                                   Spring Web 5.1.6.RELEASE
+298237134    Vulnerability       6.5         CVE-2021-30640: Access Restriction Bypass                              tomcat-embed-core 9.0.17
+298237135    Vulnerability       5.3         CVE-2021-33037: Request Smuggling                                      tomcat-embed-core 9.0.17
+298237136    Vulnerability       7.5         CVE-2021-37714: Denial Of Service                                      jsoup Java HTML Parser 1.11.3
+298237137    Vulnerability       6.5         CVE-2021-22097: Denial Of Service (DoS)                                Spring AMQP Core 2.1.5.RELEASE
+298237138    Vulnerability       5.3         CVE-2021-22047: Security Restriction Bypass                            spring-boot-actuator 2.1.4.RELEASE
+298237139    Vulnerability       4.3         CVE-2021-22096: Log Injection                                          Spring Core 5.1.6.RELEASE
+298237140    Vulnerability       6.6         CVE-2021-42550: Remote Code Execution (RCE)                            Logback Classic Module 1.2.3
+298237141    Vulnerability       6.6         CVE-2021-42550: Remote Code Execution (RCE)                            Logback Core Module 1.2.3
+298237142    Vulnerability       6.6         CVE-2021-44832: Remote Code Execution (RCE)                            Apache Log4j Core 2.17.0
+298237143    Vulnerability       7.0         CVE-2022-23181: Time Of Check To Time Of Use (TOCTOU)                  tomcat-embed-core 9.0.17
+298237144    Vulnerability       7.5         CVE-2020-36518: Denial Of Service (DoS)                                jackson-databind 2.9.8
+298237145    Vulnerability       9.8         CVE-2022-22965: Remote Code Execution (RCE)                            Spring Beans 5.1.6.RELEASE
+298237146    Vulnerability       7.8         CVE-2022-27772: Directory Traversal                                    spring-boot 2.1.4.RELEASE
+298237147    Vulnerability       6.5         CVE-2022-22950: Denial Of Service (DoS)                                Spring Expression Language (SpEL) 5.1.6.RELEASE
+298237148    Vulnerability       5.3         CVE-2022-22968: Binding Rules Bypass                                   Spring Context 5.1.6.RELEASE
+298237149    Vulnerability       7.5         CVE-2022-25647: Denial Of Service (DoS)                                Gson 2.8.1
+298237150    Vulnerability       5.3         CVE-2022-22970: Denial Of Service (DoS)                                Spring Beans 5.1.6.RELEASE
+298237151    Vulnerability       6.5         CVE-2022-22971: Denial Of Service (DoS)                                Spring Messaging 5.1.6.RELEASE
+298237152    Vulnerability       9.8         CVE-2022-22978: Authorization Bypass                                   spring-security-web 5.1.5.RELEASE
+298237153    Vulnerability       8.1         CVE-2020-10650: Deserialization Of Untrusted Data                      jackson-databind 2.9.8
+298237154    Vulnerability       6.1         CVE-2022-36033: Cross-site Scripting (XSS)                             jsoup Java HTML Parser 1.11.3
+298237155    Vulnerability       7.5         CVE-2022-42003: Denial Of Service (DoS)                                jackson-databind 2.9.8
+298237156    Vulnerability       9.8         CVE-2022-42889: Arbitrary Code Execution                               Apache Commons Text 1.9
+298237157    Vulnerability       7.5         CVE-2022-45688: Denial Of Service (DoS)                                JSON in Java 20160212
+298237158    Vulnerability       4.3         CVE-2022-4245: XML External Entity (XXE) Injection                     Plexus Common Utilities 1.5.15
+298237159    Vulnerability       7.5         CVE-2022-4244: Path Traversal                                          Plexus Common Utilities 1.5.15
+298237160    Vulnerability       6.5         CVE-2023-20863: Denial Of Service (DoS)                                Spring Expression Language (SpEL) 5.1.6.RELEASE
+298237161    Vulnerability       9.8         CVE-2023-20873: Access Restriction Bypass                              spring-boot-actuator-autoconfigure 2.1.4.RELEASE
+298237162    Vulnerability       7.5         CVE-2023-28709: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237163    Vulnerability       7.5         CVE-2023-20883: Denial Of Service (DoS)                                spring-boot-autoconfigure 2.1.4.RELEASE
+298237164    Vulnerability       7.1         CVE-2023-2976: Information Disclosure                                  Guava: Google Core Libraries for Java 18.0
+298237165    Vulnerability       7.5         CVE-2023-44487: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237166    Vulnerability       7.5         CVE-2023-5072: Denial Of Service                                       JSON in Java 20160212
+298237167    Vulnerability       7.5         CVE-2023-46120: Denial Of Service (DoS)                                RabbitMQ Java Client 5.4.3
+298237168    Vulnerability       7.5         CVE-2023-46589: Request Smuggling                                      tomcat-embed-core 9.0.17
+298237169    Vulnerability       7.5         CVE-2023-6378: Denial Of Service (DoS)                                 Logback Classic Module 1.2.3
+298237170    Vulnerability       7.5         CVE-2023-6378: Denial Of Service (DoS)                                 Logback Core Module 1.2.3
+298237171    Vulnerability       5.3         CVE-2024-21733: Sensitive Information Disclosure                       tomcat-embed-core 9.0.17
+298237172    Vulnerability       8.1         CVE-2024-22243: Server Side Request Forgery (SSRF)                     Spring Web 5.1.6.RELEASE
+298237173    Vulnerability       7.5         CVE-2024-23672: Denial Of Service (DoS)                                tomcat-embed-websocket 9.0.17
+298237174    Vulnerability       7.5         CVE-2024-24549: Denial Of Service (DoS)                                tomcat-embed-core 9.0.17
+298237175    Vulnerability       8.2         CVE-2024-22257: Improper Access Control                                spring-security-core 5.1.5.RELEASE
+298237176    Vulnerability       8.1         CVE-2024-22259: Server Side Request Forgery (SSRF)                     Spring Web 5.1.6.RELEASE
+298237177    Vulnerability       8.1         CVE-2024-22262: Open Redirect                                          Spring Web 5.1.6.RELEASE
+298237178    Outdated Library    3.0         Latest version at scan: 4.4.0                                          java jwt 3.7.0
+298237179    Outdated Library    3.0         Latest version at scan: 3.0.5                                          Jasypt Spring Boot Starter 2.1.1
+298237180    Outdated Library    3.0         Latest version at scan: 2.11.0                                         Gson 2.8.1
+298237181    Outdated Library    3.0         Latest version at scan: 4.0.5                                          Old JAXB Core 2.2.11
+298237182    Outdated Library    3.0         Latest version at scan: 4.0.5                                          Old JAXB Runtime 2.2.11
+298237183    Outdated Library    3.0         Latest version at scan: 0.12.5                                         JJWT :: Legacy Transitive Dependency Jar 0.7.0
+298237184    Outdated Library    3.0         Latest version at scan: 3.0.0                                          springfox-swagger-ui 2.5.0
+298237185    Outdated Library    3.0         Latest version at scan: 3.0.0                                          springfox-swagger2 2.5.0
+298237186    Outdated Library    3.0         Latest version at scan: 4.0.2                                          Jakarta XML Binding API 2.3.3
+298237187    Outdated Library    3.0         Latest version at scan: 2.4.0-b180830.0359                             jaxb-api 2.3.0
+298237188    Outdated Library    3.0         Latest version at scan: 3.0.0-beta2                                    Apache Log4j API 2.17.0
+298237189    Outdated Library    3.0         Latest version at scan: 3.0.0-beta2                                    Apache Log4j Core 2.17.0
+298237190    Outdated Library    3.0         Latest version at scan: 3.0.0-beta2                                    Apache Log4j JUL Adapter 2.17.0
+298237191    Outdated Library    3.0         Latest version at scan: 3.0.0-beta2                                    Apache Log4j SLF4J Binding 2.17.0
+298237192    Outdated Library    3.0         Latest version at scan: 8.0.1.Final                                    Hibernate Validator Engine 6.1.0.Alpha4
+298237193    Outdated Library    3.0         Latest version at scan: 0.15.3                                         Maven JAXB 2.x Plugin 0.14.0
+298237194    Outdated Library    3.0         Latest version at scan: 1.2.3                                          Java Encoder 1.2.1
+298237195    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-configuration-processor 2.1.4.RELEASE
+298237196    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-actuator 2.1.4.RELEASE
+298237197    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-amqp 2.1.4.RELEASE
+298237198    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-cache 2.1.4.RELEASE
+298237199    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-data-jpa 2.1.4.RELEASE
+298237200    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-log4j2 2.1.4.RELEASE
+298237201    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-security 2.1.4.RELEASE
+298237202    Outdated Library    3.0         Latest version at scan: 3.3.0-RC1                                      spring-boot-starter-web 2.1.4.RELEASE
+298237203    License             9.0         Library has High-Risk License                                          Old JAXB Core 2.2.11
+298237204    License             9.0         Library has High-Risk License                                          Old JAXB Runtime 2.2.11
+298237205    License             9.0         Library has High-Risk License                                          jaxb-api 2.3.0
+
+
+Full Report Details                            https://sca.analysiscenter.veracode.com/teams/200tXlZX/scans/66910917
+

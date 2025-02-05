@@ -1,0 +1,175 @@
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+
+trigger:
+- development
+- release
+
+# Trigger a build for the release branch within 90 days.
+# The Veracode Policy Scan that should be kicked off is required for Kenna Security.
+# Display name 'Scheduled Build And Veracode Policy Scan' is used to skip specific steps below
+schedules:
+  - cron: '0 12 1 * *'
+    displayName: Scheduled Build And Veracode Policy Scan
+    branches:
+      include:
+        - release
+    always: true
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: SUT-SHARED/pipeline-template
+      ref: refs/tags/veracode-scan-v1.1
+
+# All variables needs to be declared here
+variables:
+- name: packageName                       # artifactId from pom - populated in task below
+- name: mvnVersion                        # version from pom - populated in task below
+- name: artifactName                      # name of .jar (artifactId-version.jar) - populated in task below
+- name: gitTag
+  value: DEV_$(Build.BuildNumber)
+
+  # Veracode variables
+- name: veracodeApplicationName
+  value: 'Adapter-Coupa'
+- name: veracodeServiceConnection
+  value: 'sut-veracode-SUT-ADAPTERS'
+  # Veracode auth variables come from this group
+- group: Veracode-Pipeline-SCA-Scan
+
+# Container variables
+- name: containerRegistryName             # name of the ACR registry
+  value: 'tf-sut-nonprod-acr'
+- name: containerRepositoryPrefix
+  value: 'adapter'
+- name: containerRepositoryName
+  value: 'coupa-integration'
+- name: containerImageTag                 # suffix for tag of your image - (maven version will be added to beginning)
+  value: '$(Build.BuildNumber)'
+- name: containerJavaBaseRegistryName # name of the ACR registry to pull secure base image
+  value: "tf-cto-globalcicd-acr"
+
+# Pass below Parameters value here --Need to find way to externalize it
+parameters:
+# Maven Build
+  - name: publishJUnitResults
+    type: boolean
+    default: true
+  - name: checkStyleRunAnalysis
+    type: boolean
+    default: false
+  - name: pmdRunAnalysis
+    type: boolean
+    default: false
+  - name: spotBugsRunAnalysis
+    type: boolean
+    default: false
+
+# Veracode Parameters
+  - name: createNewVeracodeBaselines
+    displayName: Create new baseline files for scans, do not fail build if scans fail
+    type: boolean
+    default: false
+
+pool:
+      vmImage: ubuntu-latest
+
+steps:
+
+- task: PowerShell@2
+  displayName: Branch-specific checks
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo $(Build.SourceBranch)
+      if('$(Build.SourceBranch)' -like 'refs/heads/release*')
+      {
+          Write-Host "##vso[task.setvariable variable=containerRepositoryPrefix]adapter-release"
+          echo "release branch, setting docker repo to adapter-release"
+          echo $containerRepositoryPrefix
+      }
+
+# Maven
+
+  # Maven
+- task: MavenAuthenticate@0
+  inputs:
+    artifactsFeeds: 'sut-adapter-artifact-feed'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: ${{parameters.publishJUnitResults}}
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.21'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+    sqMavenPluginVersionChoice: 'latest'
+    checkStyleRunAnalysis: ${{parameters.checkStyleRunAnalysis}}
+    pmdRunAnalysis: ${{parameters.pmdRunAnalysis}}
+    spotBugsRunAnalysis: ${{parameters.spotBugsRunAnalysis}}
+
+- task: PublishCodeCoverageResults@2
+  displayName: 'Publish code coverage report'
+  inputs:
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/jacoco-ut/jacoco.xml'
+
+- task: PowerShell@2
+  displayName: Get artifact name and version
+  inputs:
+    targetType: 'inline'
+    script: |
+      [xml]$pomXml = Get-Content .\pom.xml
+      # version
+      Write-Host $pomXml.project.version
+      $version=$pomXml.project.version
+      # artifactId
+      Write-Host $pomXml.project.artifactId
+      $artifactId=$pomXml.project.artifactId
+      echo $artifactId
+      Write-Host "##vso[task.setvariable variable=mvnVersion]$version"
+      Write-Host "##vso[task.setvariable variable=packageName]$artifactId"
+      Write-Host "##vso[task.setvariable variable=artifactName]$artifactId.jar"
+
+# Veracode
+- template: veracode-scan.yml@templates
+  parameters:
+    projectName: 'adapters-coupa-integration'
+    filePath: '$(System.DefaultWorkingDirectory)/target/$(artifactName)'
+    veracodeApiKey: $(veracode-api-key)
+    veracodeApiId: $(veracode-api-id)
+    scaApiToken: $(NEW-SCA-AGENT-TOKEN)
+    generateNewBaselinesOnly: ${{ parameters.createNewVeracodeBaselines }}
+    policyScan: ${{ startsWith(variables['Build.SourceBranch'], 'refs/heads/release') }}
+    veracodeServiceConnection: $(veracodeServiceConnection)
+    veracodeApplicationName: $(veracodeApplicationName)
+
+- task: Docker@2
+  displayName: Docker login
+  inputs:
+    containerRegistry: $(containerJavaBaseRegistryName)
+    command: "login"
+
+- task: Docker@2
+  displayName: Docker build and push
+  inputs:
+    containerRegistry: $(containerRegistryName)
+    repository: '$(containerRepositoryPrefix)/$(containerRepositoryName)'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: |
+      v$(mvnVersion).$(containerImageTag)
+      $(Build.SourceBranchName)
+      latest
+
+- task: PowerShell@2
+  displayName: Echo docker image tags
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'Tagged images: v$(mvnVersion).$(containerImageTag), $(Build.SourceBranchName), latest'

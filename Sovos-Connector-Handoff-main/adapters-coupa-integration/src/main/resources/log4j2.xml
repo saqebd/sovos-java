@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+  <Properties>
+    <Property name="LOG_LOCATION" value="logs"/>
+  </Properties>
+
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT" follow="true">
+      <PatternLayout>
+        <!-- >Pattern>[%-5p] %d -%2T %l - %m%n</Pattern-->
+        <Pattern>{"loglevel": "%-5p", "timestamp": "%d{yyyy-MM-dd HH:mm:ss,SSS zzz}", "thread": %2T, "logger": "%c",  "method": "%M", "message": "%m"}%n</Pattern>
+      </PatternLayout>
+    </Console>
+
+    <RollingFile name="MONITORING-FILE" fileName="./logs/coupa-monitoring.log" filePattern="./logs/coupa-monitoring.%d{yyyy-MM-dd}.%i.log.gz">
+      <PatternLayout>
+        <!-- >Pattern>[%-5p] %d -%2T %l - %m%n</Pattern-->
+        <Pattern>{"loglevel": "%-5p", "timestamp": "%d{yyyy-MM-dd HH:mm:ss,SSS zzz}", "thread": %2T, "logger": "%c",  "method": "%M", "info": %m}%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="30"/>
+    </RollingFile>
+
+    <RollingFile name="ERROR-FILE" fileName="./logs/coupa-error.log" filePattern="./logs/coupa-error.%d{yyyy-MM-dd}.%i.log.gz">
+      <PatternLayout>
+        <!-- >Pattern>[%-5p] %d -%2T %l - %m%n</Pattern-->
+        <Pattern>{"loglevel": "%-5p", "timestamp": "%d{yyyy-MM-dd HH:mm:ss,SSS zzz}", "thread": %2T, "logger": "%c",  "method": "%M", "info": %m}%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <Filters>
+        <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <DefaultRolloverStrategy max="30"/>s
+    </RollingFile>
+
+    <RollingFile name="LOG-FILE" fileName="./logs/coupa.log" filePattern="./logs/coupa.%d{yyyy-MM-dd}.%i.log.gz">
+      <PatternLayout>
+        <!-- >Pattern>[%-5p] %d -%2T %l - %m%n</Pattern-->
+        <Pattern>{"loglevel": "%-5p", "timestamp": "%d{yyyy-MM-dd HH:mm:ss,SSS zzz}", "thread": %2T, "logger": "%c",  "method": "%M", "info": %m}%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="30"/>
+    </RollingFile>
+
+    <RollingFile name="DEBUG-FILE" fileName="./logs/coupa-debug.log" filePattern="./logs/coupa-debug.%d{yyyy-MM-dd}.%i.log.gz">
+      <PatternLayout>
+        <!-- >Pattern>[%-5p] %d -%2T %l - %m%n</Pattern-->
+        <Pattern>{"loglevel": "%-5p", "timestamp": "%d{yyyy-MM-dd HH:mm:ss,SSS zzz}", "thread": %2T, "logger": "%c",  "method": "%M", "info": %m}%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="50 MB"/>
+      </Policies>
+      <Filters>
+        <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+      <DefaultRolloverStrategy max="30"/>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="org.springframework.boot.SpringApplication" additivity="false" level="DEBUG">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Logger name="com.sovos.coupa.CoupaApplication" additivity="false" level="TRACE">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Logger name="com.sovos" additivity="false" level="info">
+      <AppenderRef ref="ERROR-FILE"/>
+      <AppenderRef ref="LOG-FILE"/>
+    </Logger>
+    <Logger name="monitoring" additivity="false" level="info">
+      <AppenderRef ref="MONITORING-FILE"/>
+    </Logger>
+    <Root level="WARN">
+      <AppenderRef ref="Console" />
+    </Root>
+  </Loggers>
+
+</Configuration>

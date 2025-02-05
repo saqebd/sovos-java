@@ -1,0 +1,9 @@
+@Library('s1JenkinsSharedLibrary@feature/coupa-pipeline-script') _
+coupaSpringbootPipeline(
+    [
+        sonatypeApplicationName: "coupa_integration",
+        veracodeApplicationName: "Adapter-Coupa",
+        veracodeSandboxName: "Coupa-Sandbox",
+        veracodeScanName: "Adapter-Coupa"
+    ]
+)
